@@ -6,6 +6,7 @@
     <modules>
         <module>service-core</module>
         <module>srb-common</module>
+        <module>service-base</module>
     </modules>
     <!-- -->
     <parent>
@@ -14,7 +15,7 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>jw.srb</groupId>
+    <groupId>com.jmit</groupId>
     <artifactId>loan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>loan</name>
