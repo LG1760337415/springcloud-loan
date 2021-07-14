@@ -23,7 +23,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.jmit</groupId>
+            <groupId>com.jmit.base</groupId>
             <artifactId>service-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
