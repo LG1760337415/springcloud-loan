@@ -10,8 +10,8 @@ import lombok.ToString;
 public enum ResponseEnum {
 
     SUCCESS(0, "成功"),
-    ERROR(-1, "服务器内部错误"),
-    ;
+    ERROR(-1, "服务器内部错误"),BAD_SQL_GRAMMAR_ERROR(-2,"sql语法错误"),
+    BORROW_AMOUNT_NULL_ERROR(-201, "借款额度不能为空");
 
     // 响应状态码
     private Integer code;

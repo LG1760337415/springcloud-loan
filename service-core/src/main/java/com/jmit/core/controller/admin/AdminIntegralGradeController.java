@@ -1,6 +1,8 @@
 package com.jmit.core.controller.admin;
 
+import com.jmit.common.exception.BusinessException;
 import com.jmit.common.result.R;
+import com.jmit.common.result.ResponseEnum;
 import com.jmit.core.pojo.entity.IntegralGrade;
 import com.jmit.core.service.IntegralGradeService;
 import io.swagger.annotations.Api;
@@ -23,6 +25,7 @@ public class AdminIntegralGradeController {
     @ApiOperation("积分等级列表")
     @GetMapping("/list")
     public R listAll(){
+        int i = 1/0;
         List<IntegralGrade> list = integralGradeService.list();
         return R.ok().data("list", list);
     }
@@ -46,6 +49,12 @@ public class AdminIntegralGradeController {
     public R save(
             @ApiParam(value = "积分等级对象", required = true)
             @RequestBody IntegralGrade integralGrade){
+        //如果借款额度为空就手动抛出一个自定义的异常！
+        if(integralGrade.getBorrowAmount() == null){
+            //BORROW_AMOUNT_NULL_ERROR(-201, "借款额度不能为空"),
+            throw new BusinessException(ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
+        }
+
         boolean result = integralGradeService.save(integralGrade);
         if (result) {
             return R.ok().message("保存成功");
