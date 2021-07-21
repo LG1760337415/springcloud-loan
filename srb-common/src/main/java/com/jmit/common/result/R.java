@@ -14,6 +14,7 @@ public class R {
 
     private Map<String, Object> data = new HashMap();
 
+
     /**
      * 构造器私有
      */

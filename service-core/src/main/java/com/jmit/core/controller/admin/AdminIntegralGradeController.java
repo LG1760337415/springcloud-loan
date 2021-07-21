@@ -1,16 +1,27 @@
 package com.jmit.core.controller.admin;
 
+import com.alibaba.excel.EasyExcel;
 import com.jmit.common.exception.BusinessException;
 import com.jmit.common.result.R;
 import com.jmit.common.result.ResponseEnum;
+import com.jmit.core.pojo.entity.Dict;
+import com.jmit.core.pojo.entity.ExcelDictDTO;
 import com.jmit.core.pojo.entity.IntegralGrade;
+import com.jmit.core.service.DictService;
 import com.jmit.core.service.IntegralGradeService;
+import com.sun.deploy.net.URLEncoder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @CrossOrigin
@@ -21,6 +32,8 @@ public class AdminIntegralGradeController {
 
     @Resource
     private IntegralGradeService integralGradeService;
+    @Resource
+    private DictService dictService;
 
     @ApiOperation("积分等级列表")
     @GetMapping("/list")
@@ -61,6 +74,7 @@ public class AdminIntegralGradeController {
         } else {
             return R.error().message("保存失败");
         }
+
     }
 
     @ApiOperation("根据id获取积分等级")
@@ -89,4 +103,5 @@ public class AdminIntegralGradeController {
             return R.error().message("修改失败");
         }
     }
+
 }
